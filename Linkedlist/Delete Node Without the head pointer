@@ -6,3 +6,5 @@ public:
         node->next=temp->next;      
     }
 };
+
+//the element to be deleted is not the the last element or the tail element.
