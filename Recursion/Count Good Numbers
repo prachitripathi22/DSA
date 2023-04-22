@@ -1,0 +1,24 @@
+#define mod 1000000007
+class Solution {
+private:
+long long myPow(long long x , long long n)
+{
+    if(n==0 ) return 1;
+    if(x==0) return 0;
+    long long ans = myPow(x,n/2);
+    if(n%2==0)
+    {
+        return (ans%mod * ans%mod);
+    }
+    else
+    {
+        return (ans%mod * ans%mod * x%mod);
+    }
+
+}
+public:
+    int countGoodNumbers(long long n) {
+        return(myPow(5,(n+1)/2) * myPow(4,n/2))%mod;
+        
+    }
+};
