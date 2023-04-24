@@ -1,0 +1,47 @@
+//{ Driver Code Starts
+//Initial template for C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+//User function template for C++
+
+class Solution {
+  public:
+    //Function to return a list of indexes denoting the required 
+    //combinations whose sum is equal to given number.
+    void help(int i,vector<int> & A,vector<int>& temp ,int B,vector<vector<int>>& ans)
+    {
+        if(i==A.size())
+        {
+            if(B==0)
+            {
+                // sort(temp.begin(),temp.end());
+                ans.push_back(temp);
+            }
+            return;
+        }
+        
+        if(A[i]<=B)
+        {
+            temp.push_back(A[i]);
+            help(i,A,temp,B-A[i],ans);
+            temp.pop_back();
+        }
+        help(i+1,A,temp,B,ans);
+    }
+    
+    vector<vector<int> > combinationSum(vector<int> &A, int B) {
+        // Your code here
+        sort(A.begin(),A.end());
+        A.erase(unique(A.begin(), A.end()), A.end());
+        vector<int> temp;
+        vector<vector<int>> ans;
+        help(0,A,temp,B,ans);
+        sort(ans.begin(),ans.end());
+        return ans;
+        
+    }
+};
