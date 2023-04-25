@@ -1,0 +1,34 @@
+//{ Driver Code Starts
+#include<bits/stdc++.h> 
+using namespace std; 
+
+// } Driver Code Ends
+class Solution
+{
+public:
+    void help(int i, vector<int>& arr ,vector<int>&temp,int sum, int N)
+    {
+        if(i==N)
+        {
+            temp.push_back(sum);
+            return;
+        }
+        
+        {
+            //pick the element
+            help(i+1,arr,temp,sum+arr[i],N);
+            
+            //not pick the element
+            help(i+1,arr,temp,sum,N);
+            
+        }
+    }
+    vector<int> subsetSums(vector<int> arr, int N)
+    {
+        // Write Your Code here
+        vector<int>temp;
+        int sum;
+        help(0,arr,temp,sum,N);
+        return temp;
+    }
+};
